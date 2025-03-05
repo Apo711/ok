@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chúc mừng sinh nhật Yến Thanh</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Patrick+Hand&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      #letterContent {
+        background-image: url("path/to/your/old-paper-image.jpg");
+        background-size: cover;
+        background-position: center;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      :root {
+        --pastel-pink: #ffb6c1;
+        --pastel-pink-light: #ffc0cb;
+        --pastel-pink-dark: #ff69b4;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Patrick Hand", cursive;
+      }
+
+      body {
+        background-color: var(--pastel-pink-light);
+        color: #333;
+        line-height: 1.6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        text-align: center;
+        padding: 20px;
+        position: relative;
+      }
+
+      .container {
+        background-color: white;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        width: 100%;
+        padding: 30px;
+        position: relative;
+        overflow: hidden;
+        z-index: 10;
+      }
+
+      h1 {
+        font-family: "Dancing Script", cursive;
+        color: var(--pastel-pink-dark);
+        font-size: 2rem;
+        margin-bottom: 20px;
+      }
+
+      .section-wrapper {
+        position: relative;
+      }
+
+      .section-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        position: relative;
+      }
+
+      .image-section {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        position: relative;
+        z-index: 10;
+      }
+
+      .chat-bubble {
+        background-color: #f0f0f0;
+        border-radius: 20px;
+        padding: 15px;
+        position: relative;
+        max-width: 300px;
+        margin-left: -30px;
+        z-index: 5;
+      }
+
+      .chat-bubble::before {
+        content: "";
+        position: absolute;
+        top: 30%;
+        left: -20px;
+        width: 0;
+        height: 0;
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-right: 20px solid #f0f0f0;
+        transform: rotate(0deg);
+      }
+
+      .btn-container {
+        margin-top: 20px;
+      }
+
+      .btn {
+        background-color: var(--pastel-pink-dark);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        margin: 10px;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      #section2,
+      #section3 {
+        display: none;
+      }
+
+      .countdown {
+        font-size: 1.2rem;
+        color: var(--pastel-pink-dark);
+        margin-top: 10px;
+      }
+
+      /* Heart effect */
+      .heart {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: red;
+        transform: rotate(-45deg);
+        animation: fall 3s linear infinite;
+        z-index: 1;
+      }
+
+      .heart::before,
+      .heart::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: red;
+        border-radius: 50%;
+      }
+
+      .heart::before {
+        top: -10px;
+        left: 0;
+      }
+
+      .heart::after {
+        left: 10px;
+        top: 0;
+      }
+
+      @keyframes fall {
+        0% {
+          transform: translateY(-20px) rotate(-45deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh) rotate(-45deg);
+          opacity: 0;
+        }
+      }
+
+      /* Fireworks canvas */
+      #fireworksCanvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <audio id="backgroundMusic" autoplay loop muted>
+      <source
+        src="web cho YT/âm thanh/iLoveYt.net_YouTube_OFFICIAL-KARAOKE-MAT-MOC-BEAT-GOC-PHAM-N_Media_aaukjZnSpKw_004_360p.mp3"
+        type="audio/mpeg"
+      />
+    </audio>
+    <audio id="openLetterSound">
+      <source
+        src="/web cho YT/âm thanh/mixkit-ocean-game-movement-water-air-tank-bubbles-huge-long-3017.mp3"
+        type="audio/mpeg"
+      />
+    </audio>
+    <audio id="clickSound">
+      <source
+        src="/web cho YT/âm thanh/mixkit-modern-technology-select-3124.mp3"
+        type="audio/mpeg"
+      />
+    </audio>
+    <canvas id="fireworksCanvas"></canvas>
+    <div class="container">
+      <div id="section1">
+        <h1>Bạn nhận được lời nhắn từ Hoàng tử Cái Răng</h1>
+
+        <div class="section-wrapper">
+          <div class="section-container">
+            <div class="image-section">
+              <img
+                src="/web cho YT/e69d0f10536ae234bb7b.jpg"
+                alt="Hoàng tử"
+                style="width: 100%; height: 100%; object-fit: cover"
+              />
+            </div>
+            <div class="chat-bubble">
+              Xin chào nàng! Ta xin tự giới thiệu, ta là hoàng tử Cái Răng. Ta
+              đang đi ngao du sơn thủy thì chẳng may lạc vào ánh mắt nàng. Vô
+              tình ta thấy nàng cũng đẹp, đúng gu của ta. Không biết nàng có
+              đồng ý về kinh thành dạ hội cùng ta?
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-container">
+          <button id="agreeBtn" class="btn">Em đồng ý</button>
+          <button id="waitBtn" class="btn">Chờ xíu, để suy nghĩ</button>
+        </div>
+      </div>
+
+      <div id="section2">
+        <h2>Lý Lịch</h2>
+        <p>
+          Cảm ơn nàng, trước hết ta cần biết lý lịch của nàng. Ta đã tìm hiểu về
+          nàng trước đây. Dưới đây là một số thông tin ta thu thập được. Nàng
+          xem có đúng không nhé?
+        </p>
+
+        <div>
+          <p>- Giai đoạn 1 (16/3/2004): Ra đời</p>
+          <p>- Giai đoạn 2: Hình thành cái nết</p>
+          <div class="stage-container">
+            <img
+              src="/web cho YT/0e03916ad710664e3f019.jpg"
+              alt="Giai đoạn 2 - 1"
+              class="stage-image"
+              width="30%"
+            />
+            <img
+              src="/web cho YT/5e15e3eea59414ca4d851.jpg"
+              alt="Giai đoạn 2 - 2"
+              class="stage-image"
+              width="30%"
+            />
+            <img
+              src="/web cho YT/881a5070160aa754fe1b10.jpg"
+              alt="Giai đoạn 2 - 3"
+              class="stage-image"
+              width="30%"
+            />
+            <img
+              src="/web cho YT/7419ad10eb6a5a34037b11.jpg"
+              alt="Giai đoạn 2 - 4"
+              class="stage-image"
+              width="30%"
+            />
+            <img
+              src="/web cho YT/594389aacfd07e8e27c14.jpg"
+              alt="Giai đoạn 2 - 5"
+              class="stage-image"
+              width="30%"
+            />
+            <img
+              src="/web cho YT/c42552c714bda5e3fcac3.jpg"
+              alt="Giai đoạn 2 - 6"
+              class="stage-image"
+              width="30%"
+            />
+          </div>
+
+          <p>- Giai đoạn 3: Quậy bồ</p>
+          <div class="stage-container">
+            <img
+              src="/web cho YT/d71b5c981de2acbcf5f318.jpg"
+              alt="Giai đoạn 3 - 1"
+              class="stage-image"
+              width="30%"
+            />
+            <img
+              src="/web cho YT/202f3d327c48cd16945920.jpg"
+              alt="Giai đoạn 3 - 2"
+              class="stage-image"
+              width="30%"
+            />
+            <img
+              src="/web cho YT/265afe5cbe260f78563714.jpg"
+              alt="Giai đoạn 3 - 3"
+              class="stage-image"
+              width="30%"
+            />
+            <img
+              src="/web cho YT/362257b615cca492fddd23.jpg"
+              alt="Giai đoạn 3 - 4"
+              class="stage-image"
+              width="30%"
+            />
+            <img
+              src="/web cho YT/d7070fb04ecaff94a6db19.jpg"
+              alt="Giai đoạn 3 - 5"
+              class="stage-image"
+              width="30%"
+            />
+            <img
+              src="/web cho YT/a8b9618420fe91a0c8ef22.jpg"
+              alt="Giai đoạn 3 - 6"
+              class="stage-image"
+              width="30%"
+            />
+          </div>
+
+          <button id="section2ConfirmBtn" class="btn">Chính xác</button>
+        </div>
+      </div>
+
+      <div id="section3">
+        <div class="section-wrapper">
+          <div class="section-container">
+            <div class="image-section">
+              <img
+                src="/web cho YT/e69d0f10536ae234bb7b.jpg"
+                alt="Hoàng tử"
+                style="width: 100%; height: 100%; object-fit: cover"
+              />
+            </div>
+            <div class="chat-bubble">
+              Hehe, ta sẽ về bẩm báo với vua cha. Dưới đây là thư mời của ta.
+              Đúng 17h30p ngày 08/3/2025 đích thân ta sẽ đến rước nàng.
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-container">
+          <button id="letterBtn" class="btn">Mở thư</button>
+        </div>
+
+        <div
+          id="letterContent"
+          style="display: none; text-align: left !important"
+        >
+          <h3>Thư mời</h3>
+
+          <p>Xin chào Yến Thanh,</p>
+          <p>
+            Đây là thư mời được viết bởi Hoàng tử Cái Răng, hy vọng ngày
+            08/3/2025 ta có thể gặp nàng. Đừng từ chối lời mời của ta nhé.
+          </p>
+          <p>Hẹn gặp nàng dưới ánh trăng!</p>
+          <p>Hoàng tử Cái Răng</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const section1 = document.getElementById("section1");
+        const section2 = document.getElementById("section2");
+        const section3 = document.getElementById("section3");
+        const agreeBtn = document.getElementById("agreeBtn");
+        const waitBtn = document.getElementById("waitBtn");
+        const section2ConfirmBtn =
+          document.getElementById("section2ConfirmBtn");
+        const letterBtn = document.getElementById("letterBtn");
+        const letterContent = document.getElementById("letterContent");
+
+        let countdownTimer;
+
+        waitBtn.addEventListener("click", () => {
+          section1.innerHTML = `
+                    <div class="section-wrapper">
+                        <div class="section-container">
+                            <div class="image-section">
+                                <img src="/api/placeholder/150/150" alt="Hoàng tử" style="width:100%; height:100%; object-fit:cover;">
+                            </div>
+                            <div class="chat-bubble">
+                                Ta đợi câu trả lời của nàng
+                            </div>
+                        </div>
+                    </div>
+                    <div class="countdown">Còn 7 giây</div>
+                `;
+
+          let timeLeft = 7;
+          countdownTimer = setInterval(() => {
+            timeLeft--;
+            const countdownEl = document.querySelector(".countdown");
+            if (countdownEl) {
+              if (timeLeft > 0) {
+                countdownEl.textContent = `Còn ${timeLeft} giây`;
+              } else {
+                clearInterval(countdownTimer);
+                section1.innerHTML = `
+                                <div class="section-wrapper">
+                                    <div class="section-container">
+                                        <div class="image-section">
+                                            <img src="/web cho YT/e69d0f10536ae234bb7b.jpg" alt="Hoàng tử" style="width:100%; height:100%; object-fit:cover;">
+                                        </div>
+                                        <div class="chat-bubble">
+                                            Ta vẫn đang chờ nàng
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btn-container">
+                                    <button id="agreeBtn" class="btn">Em đồng ý</button>
+                                    <button id="waitBtn" class="btn">Chờ xíu, để suy nghĩ</button>
+                                </div>
+                            `;
+                attachInitialEventListeners();
+              }
+            }
+          }, 1000);
+        });
+
+        function attachInitialEventListeners() {
+          const agreeBtn = document.getElementById("agreeBtn");
+          const waitBtn = document.getElementById("waitBtn");
+
+          agreeBtn.addEventListener("click", () => {
+            section1.style.display = "none";
+            section2.style.display = "block";
+          });
+
+          waitBtn.addEventListener("click", () => {
+            section1.innerHTML = `
+                        <div class="section-wrapper">
+                            <div class="section-container">
+                                <div class="image-section">
+                                    <img src="/web cho YT/e69d0f10536ae234bb7b.jpg" alt="Hoàng tử" style="width:100%; height:100%; object-fit:cover;">
+                                </div>
+                                <div class="chat-bubble">
+                                    Ta đợi câu trả lời của nàng
+                                </div>
+                            </div>
+                        </div>
+                        <div class="countdown">Còn 7 giây</div>
+                    `;
+
+            let timeLeft = 7;
+            countdownTimer = setInterval(() => {
+              timeLeft--;
+              const countdownEl = document.querySelector(".countdown");
+              if (countdownEl) {
+                if (timeLeft > 0) {
+                  countdownEl.textContent = `Còn ${timeLeft} giây`;
+                } else {
+                  clearInterval(countdownTimer);
+                  section1.innerHTML = `
+                                    <div class="section-wrapper">
+                                        <div class="section-container">
+                                            <div class="image-section">
+                                                <img src="/web cho YT/e69d0f10536ae234bb7b.jpg" alt="Hoàng tử" style="width:100%; height:100%; object-fit:cover;">
+                                            </div>
+                                            <div class="chat-bubble">
+                                                Ta vẫn đang chờ nàng
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="btn-container">
+                                        <button id="agreeBtn" class="btn">Em đồng ý</button>
+                                        <button id="waitBtn" class="btn">Chờ xíu, để suy nghĩ</button>
+                                    </div>
+                                `;
+                  attachInitialEventListeners();
+                }
+              }
+            }, 1000);
+          });
+        }
+
+        attachInitialEventListeners();
+
+        agreeBtn.addEventListener("click", () => {
+          section1.style.display = "none";
+          section2.style.display = "block";
+        });
+
+        section2ConfirmBtn.addEventListener("click", () => {
+          section2.style.display = "none";
+          section3.style.display = "block";
+        });
+
+        letterBtn.addEventListener("click", () => {
+          letterContent.style.display = "block";
+          letterBtn.style.display = "none";
+        });
+
+        // Gọi các hàm để tạo hiệu ứng
+        createHearts();
+        createFireworks();
+      });
+
+      function createHearts() {
+        const heartContainer = document.createElement("div");
+        heartContainer.className = "heart-container";
+        document.body.appendChild(heartContainer);
+
+        for (let i = 0; i < 20; i++) {
+          const heart = document.createElement("div");
+          heart.className = "heart";
+          heart.style.left = `${Math.random() * 100}vw`;
+          heart.style.animationDuration = `${Math.random() * 2 + 3}s`;
+          heartContainer.appendChild(heart);
+        }
+      }
+
+      function createFireworks() {
+        const canvas = document.getElementById("fireworksCanvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const fireworks = [];
+
+        function createFirework() {
+          const x = Math.random() * canvas.width;
+          const y = (Math.random() * canvas.height) / 2;
+          const color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+          const particles = [];
+
+          for (let i = 0; i < 50; i++) {
+            const angle = Math.random() * Math.PI * 2;
+            const speed = Math.random() * 5 + 2;
+            particles.push({
+              x: x,
+              y: y,
+              vx: Math.cos(angle) * speed,
+              vy: Math.sin(angle) * speed,
+              color: color,
+              life: 100,
+            });
+          }
+
+          fireworks.push(particles);
+        }
+
+        function draw() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          fireworks.forEach((particles, index) => {
+            particles.forEach((particle, pIndex) => {
+              ctx.beginPath();
+              ctx.arc(particle.x, particle.y, 2, 0, Math.PI * 2);
+              ctx.fillStyle = particle.color;
+              ctx.fill();
+
+              particle.x += particle.vx;
+              particle.y += particle.vy;
+              particle.vy += 0.05; // Gravity
+              particle.life -= 1;
+
+              if (particle.life <= 0) {
+                particles.splice(pIndex, 1);
+              }
+            });
+
+            if (particles.length === 0) {
+              fireworks.splice(index, 1);
+            }
+          });
+
+          requestAnimationFrame(draw);
+        }
+
+        setInterval(createFirework, 2000);
+        draw();
+      }
+      document.addEventListener("DOMContentLoaded", () => {
+        const backgroundMusic = document.getElementById("backgroundMusic");
+        backgroundMusic.play();
+      });
+
+      const letterBtn = document.getElementById("letterBtn");
+      const letterContent = document.getElementById("letterContent");
+      letterBtn.addEventListener("click", () => {
+        const openLetterSound = document.getElementById("openLetterSound");
+        openLetterSound.play();
+        letterContent.style.display = "block";
+        letterBtn.style.display = "none";
+      });
+      const buttons = document.querySelectorAll(".btn");
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const clickSound = document.getElementById("clickSound");
+          clickSound.play();
+        });
+      });
+      const audio = document.getElementById("backgroundMusic");
+
+      // Khi người dùng nhấp chuột bất kỳ đâu trên trang, bỏ muted
+      document.addEventListener("click", function () {});
+      audio.muted = false;
+    </script>
+    <audio id="backgroundMusic" loop>
+      <source
+        src="web cho YT/âm thanh/iLoveYt.net_YouTube_OFFICIAL-KARAOKE-MAT-MOC-BEAT-GOC-PHAM-N_Media_aaukjZnSpKw_004_360p.mp3"
+        type="audio/mpeg"
+      />
+    </audio>
+    <audio id="openLetterSound">
+      <source
+        src="/web cho YT/âm thanh/mixkit-ocean-game-movement-water-air-tank-bubbles-huge-long-3017.mp3"
+        type="audio/mpeg"
+      />
+    </audio>
+    <audio id="clickSound">
+      <source
+        src="/web cho YT/âm thanh/mixkit-modern-technology-select-3124.mp3"
+        type="audio/mpeg"
+      />
+    </audio>
+  </body>
+</html>
